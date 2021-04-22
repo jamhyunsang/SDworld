@@ -17,10 +17,10 @@ namespace Hyunsang.Characters
         private Animator animator;
         private JoyStick joyStick;
 
-        private int hashMove = Animator.StringToHash("Move");
-        private int hashAttackTrigger = Animator.StringToHash("AttackTrigger");
-        private int hashAttackIndex = Animator.StringToHash("AttackIndex");
-        private int hashDie = Animator.StringToHash("Die");
+        readonly int hashMove = Animator.StringToHash("Move");
+        readonly int hashAttackTrigger = Animator.StringToHash("AttackTrigger");
+        readonly int hashAttackIndex = Animator.StringToHash("AttackIndex");
+        readonly int hashDie = Animator.StringToHash("Die");
        
 
 
@@ -67,7 +67,7 @@ namespace Hyunsang.Characters
                 animator.SetTrigger(hashAttackTrigger);
                 state = CharacterState.Attack;
             }
-            if (joyStick.istouch)
+            if (joyStick.IsTouch)
             {
                 animator.SetBool(hashMove, true);
                 state = CharacterState.Move;
@@ -86,7 +86,7 @@ namespace Hyunsang.Characters
                 animator.SetTrigger(hashAttackTrigger);
                 state = CharacterState.Attack;
             }
-            if (!joyStick.istouch)
+            if (!joyStick.IsTouch)
             {
                 navMeshAgent.ResetPath();
                 animator.SetBool(hashMove, false);
@@ -96,7 +96,7 @@ namespace Hyunsang.Characters
         protected override void Attack()
         {
             isAttack = false;
-            if (joyStick.istouch)
+            if (joyStick.IsTouch)
             {
                 animator.SetBool(hashMove, true);
                 state = CharacterState.Move;
@@ -107,13 +107,13 @@ namespace Hyunsang.Characters
             }
 
         }
-        public void _Attack() => Attack();
+        public void ATTACK() => Attack();
 
         public override void Damage(int damage)
         {
             isDamage = true;
-            GameManager.Instance.plyerInfo.Damage(damage);
-            if(GameManager.Instance.plyerInfo.CurrentHp<0)
+            GameManager.Instance.playerInfo.Damage(damage);
+            if(GameManager.Instance.playerInfo.CurrentHp<0)
             {
                 Die();
             }
@@ -129,7 +129,6 @@ namespace Hyunsang.Characters
         protected override void Die()
         {
             animator.SetBool(hashDie, true);
-
         }
 
         public void AttackButton()

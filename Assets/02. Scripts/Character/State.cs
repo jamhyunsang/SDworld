@@ -23,8 +23,11 @@ namespace Hyunsang.Characters
 
         #endregion Variables
 
+        #region Unity Methods
 
         protected abstract void Update();
+
+        #endregion Unity Methods
 
         #region Help Methods
         protected abstract void Idle();

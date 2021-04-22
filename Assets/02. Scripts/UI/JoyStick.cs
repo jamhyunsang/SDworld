@@ -10,15 +10,15 @@ namespace Hyunsang.UIs
         #region Variables
         // 백그라운드
         [SerializeField]
-        private RectTransform backGroundRect;
+        private RectTransform backGroundRect = null;
         // 조이스틱
         [SerializeField]
-        private RectTransform joyStickRect;
+        private RectTransform joyStickRect = null;
         // 백그라운드 반지름
         private float backGroundRadius;
         // 터치상태
         private bool isTouch;
-        public bool istouch => isTouch;
+        public bool IsTouch => isTouch;
         // 방향 
         private Vector3 dir;
         public Vector3 Dir => dir;

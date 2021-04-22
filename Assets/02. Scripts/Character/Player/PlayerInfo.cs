@@ -1,51 +1,46 @@
-﻿using System;
+﻿using Hyunsang.Core;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Hyunsang.Characters
+namespace Hyunsang.Info
 {
     [Serializable]
     public class PlayerInfo
     {
         [SerializeField]
-        string id;
+        string userName;
         [SerializeField]
-        int level,exp;
-        [SerializeField]
-        int currentHp, maxHp;
+        int level, exp, attack, def, stat_str, stat_dex, stat_int, stat_luk, currentHp, maxHp;
         public int CurrentHp => currentHp;
-        [SerializeField]
-        int attackPoint, defPoint;
-        [SerializeField]
-        int stat_str, stat_dex, stat_int, stat_luk;
 
-        public PlayerInfo(string id, int level, int currentHp, int maxHp, int attackPoint, int defPoint, int stat_str, int stat_dex, int stat_int, int stat_luk)
-        {
-            this.id = id;
+        public PlayerInfo(string userName, int level, int currentHp, int maxHp, int attack, int def, int stat_str, int stat_dex, int stat_int, int stat_luk)
+        { 
+            this.userName = userName;
             this.level = level;
             this.currentHp = currentHp;
             this.maxHp = maxHp;
-            this.attackPoint = attackPoint;
-            this.defPoint = defPoint;
+            this.attack = attack;
+            this.def = def;
             this.stat_str = stat_str;
             this.stat_dex = stat_dex;
             this.stat_int = stat_int;
             this.stat_luk = stat_luk;
         }
 
-        public PlayerInfo(string id)
+        public PlayerInfo(string userName)
         {
-            this.id = id;
+            this.userName = userName;
             this.level = 1;
             this.currentHp = 50;
             this.maxHp = 50;
-            this.attackPoint = stat_str*1;
-            this.defPoint = stat_str * 1;
-            this.stat_str = 23;
+            this.stat_str = 30;
             this.stat_dex = 4;
             this.stat_int = 4;
             this.stat_luk = 4;
+            this.def = stat_str * 1;
+            this.attack = stat_str*1;
         }
 
         public void Damage(int damage)
